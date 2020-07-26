@@ -53,12 +53,12 @@ class Dimension:
     return NotImplemented
 
   def __mul__(self, other):
-    if isinstance(other, numbers.Number):
+    if isinstance(other, numbers.Real):
       return Dimension(self.value * other, self.unit)
     return NotImplemented
 
   def __truediv__(self, other):
-    if isinstance(other, numbers.Number):
+    if isinstance(other, numbers.Real):
       return Dimension(self.value / other, self.unit)
     return NotImplemented
 
@@ -118,12 +118,12 @@ class Length:
     return NotImplemented
 
   def __mul__(self, other):
-    if isinstance(other, numbers.Number):
+    if isinstance(other, numbers.Real):
       return Length({var: coeff * other for var, coeff in self.repr.items()})
     return NotImplemented
 
   def __truediv__(self, other):
-    if isinstance(other, numbers.Number):
+    if isinstance(other, numbers.Real):
       return Length({var: coeff / other for var, coeff in self.repr.items()})
     return NotImplemented
 
