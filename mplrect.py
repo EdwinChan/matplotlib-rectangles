@@ -404,6 +404,7 @@ class BaseLayout:
 
   @classmethod
   def solve(cls, rect, ctxs):
+    import sys
     def iter_leaf_vars(rect):
       for rect in rect.rects:
         yield from iter_leaf_vars(rect) if rect.rects else rect.vars
@@ -412,14 +413,14 @@ class BaseLayout:
     rect.eqns += ctxs
     sol = rect.solve()[index]
     rect.eqns = rect.eqns[:-len(ctxs)]
-    print(cls.format_solution(sol))
+    print(cls.format_solution(sol), file=sys.stderr)
     return sol
 
   @staticmethod
   def format_solution(sol):
     return '\n'.join(
       '{:2} | {:7.4f} {:7.4f} {:7.4f} {:7.4f} | {:7.4f} {:7.4f}'
-      .format('' if n == 0 else str(n-1), x1, y1, x2, y2, x2-x1, y2-y1)
+      .format('' if n == 0 else n-1, x1, y1, x2, y2, x2-x1, y2-y1)
       for n, (x1, y1, x2, y2) in enumerate(split_every(sol, 4)))
 
 class PredefinedLayout(BaseLayout):
