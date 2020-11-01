@@ -435,7 +435,7 @@ class PredefinedLayout(BaseLayout):
     # padding around individual axes for labels and ticks and to maintain space
     self.top_padding                  =  Dimension.parse('0.020in') * font_size
     self.bottom_padding               =  Dimension.parse('0.045in') * font_size
-    self.left_padding                 =  Dimension.parse('0.055in') * font_size
+    self.left_padding                 =  Dimension.parse('0.060in') * font_size
     self.right_padding                =  Dimension.parse('0.020in') * font_size
     # extra padding if axes are laid out in grid
     self.horizontal_extra_padding     = -Dimension.parse('0.020in') * font_size
@@ -579,8 +579,10 @@ class ScreenLayout(PredefinedLayout):
 
   def __init__(self):
     super().__init__()
-    self.figure_width  = Dimension.parse('6.4in')
-    self.figure_height = None
+    self.figure_width    = Dimension.parse('6.4in')
+    self.figure_height   = None
+    self.bottom_padding *= 1.2
+    self.left_padding   *= 1.2
 
 class PrintLayout(PredefinedLayout):
   """
