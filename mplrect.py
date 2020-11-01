@@ -142,7 +142,7 @@ class Rectangle:
 
   The coordinates of the top-left and bottom-right corners of the
   rectangle are (self.x1, self.y1) and (self.x2, self.y2)
-  respectively. 
+  respectively.
   """
 
   def __init__(self):
