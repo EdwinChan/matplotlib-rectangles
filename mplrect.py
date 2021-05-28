@@ -525,13 +525,12 @@ class PredefinedLayout(BaseLayout):
     else:
       check_grid_size(rects, nx, ny)
 
-    sx = self.horizontal_extra_padding if nx > 1 else Dimension.zero
-    sy = self.vertical_extra_padding   if ny > 1 else Dimension.zero
-
     result = Rectangle()
     for rect in rects:
       result.add(rect)
-    result.size_to_grid(rects, nx, ny, sx=sx, sy=sy)
+    result.size_to_grid(
+      rects, nx, ny,
+      self.horizontal_extra_padding, self.vertical_extra_padding)
     first, last = rects[0], rects[-1]
     for i in range(1, nx):
       result.set_equal(first.dx * rx[i], rects[i].dx * rx[0])
